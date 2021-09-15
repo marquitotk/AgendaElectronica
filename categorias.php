@@ -15,13 +15,19 @@
         <?php require_once "menu.php"?>
         <div class="jumbotron">
             <h1>Categorias</h1>
-            <button class="btn btn-info">Agregar Categorias </button>
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#AgregarCategoriaModal">
+                    <span class="fas fa-user-edit"></span> Agregar Categorias 
+            </button>
             <hr class="my-4">
             
             <div id="cargarTablaCategoria">
 
             </div>
-        </div>
+            </div>
+            <?php
+            require_once "vistas/categorias/modal_AgregarCategorias.php";
+            ?>
+        
     </div>
     <script src="public/js/categorias.js"></script>
 </body>

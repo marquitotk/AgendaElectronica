@@ -16,15 +16,16 @@
           <div class="jumbotron">
             
             <h1>Contacto</h1>
-            <button class="btn btn-outline-info">
-
-            Agregar Contacto
+            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#AgregarContactoModal">
+                        <span class="fas fa-user-edit"></span>Agregar Contacto
             </button>
-            <hr class="my-4">
-            
+            <hr class="my-4">  
             <div id="cargarTablaContacto">
 
             </div>
+            <?php
+              require_once "vistas/contactos/modal_AgregarContacto.php"
+            ?>
           </div>
     </div>
   <script src="public/js/contactos.js"></script>
