@@ -21,12 +21,12 @@
           <td></td>
           <td></td>
           <td>
-            <span class="btn btn-warning btn-sm">
+            <span class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#ActualizarContactoModal">
                   <span class="fas fa-user-edit">   </span>  
             </span>
           </td>
           <td>
-          <span class="btn btn-danger btn-sm">
+          <span class="btn btn-danger btn-sm" onclick="eliminarContacto()">
                   <span class="far fa-trash-alt">   </span>  
             </span>
           </td>
@@ -39,5 +39,4 @@ $(document).ready(function () {
  
   $('#dt_tablaContacto').DataTable();
 });
-
 </script>

@@ -24,7 +24,8 @@
 
             </div>
             <?php
-              require_once "vistas/contactos/modal_AgregarContacto.php"
+              require_once "vistas/contactos/modal_AgregarContacto.php";
+              require_once "vistas/contactos/modal_ActualizarContacto.php";
             ?>
           </div>
     </div>

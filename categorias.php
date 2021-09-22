@@ -26,6 +26,7 @@
             </div>
             <?php
             require_once "vistas/categorias/modal_AgregarCategorias.php";
+            require_once "vistas/categorias/modal_ActualizarCategorias.php";
             ?>
         
     </div>
