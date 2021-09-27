@@ -7,8 +7,9 @@ class Categorias extends Conexion{
         $conexion = Conexion::conectar();
         $sql ="INSERT INTO t_categoria(nombreCategoria,descripcionCategoria) VALUES (?,?)";
         $query=$conexion->prepare($sql);
-        $query->bind_param('ss',$datos['nombreCatgoria'],$datos['descripcion']);
+        $query->bind_param('ss',$datos['nombre'],$datos['descripcion']);
         $respuesta=$query->execute();
+        
         return $respuesta;
     }
 }

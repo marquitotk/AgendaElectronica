@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
     $('#cargarTablaCategoria').load('vistas/categorias/tablaCategorias.php');
-    $('#frmAgregarCategoria').click(function(){
+    $('#btnGuardarCategoria').click(function(){
       agregarCategoria();
     });
 });
