@@ -2,7 +2,12 @@ $(document).ready(function()
 {
     $('#cargarTablaCategoria').load('vistas/categorias/tablaCategorias.php');
     $('#btnGuardarCategoria').click(function(){
-      agregarCategoria();
+
+      if ($("#nombreCatgoria").val() === "" ) {
+        swal("T-T", "Por favor ingrese datos", "error");
+        return false;
+       } 
+        agregarCategoria();
     });
 });
 function agregarCategoria()
@@ -13,8 +18,8 @@ function agregarCategoria()
     url:"procesos/categoria/agregarCategoria.php",
     success:function (respuesta) {
       respuesta=respuesta.trim();
-      if (respuesta==1) {
-        $('#frmAgregarCategoria')[0].reset();
+      if (respuesta == 1) {
+      
         swal(":D","===Categorias","success");
       }
       else
@@ -24,22 +29,36 @@ function agregarCategoria()
     } 
   });
 }
-function eliminarCategoria()
+function eliminarCategoria(idCategoria)
 {
-    swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this imaginary file!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          swal("Poof! Your imaginary file has been deleted!", {
-            icon: "success",
-          });
-        } else {
-          swal("Your imaginary file is safe!");
-        }
-      });
+  swal({
+    title: "¿Estas Seguro que deseas eliminar esta Cateoria?",
+    text: "Una vez Eliminado no se Prodra Recuperar!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+     $.ajax({
+     type:"POST",
+     data:"idCategoria="+idCategoria,
+     url:"procesos/categoria/eliminarCategoria.php",
+     success:function(respuesta)
+     {
+      respuesta=respuesta.trim();
+      if (respuesta == 1) {
+        $('#frmAgregarCategoria')[0].reset();
+        swal(":D","===Categorias","success");
+      }
+      else
+      {
+        swal(":C","===Categorias Cancelar","error");
+      }  
+      
+     }
+
+     });
+    } 
+  });
 }
