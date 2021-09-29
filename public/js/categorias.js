@@ -68,10 +68,13 @@ function obtenerDatosCategoria(idCategoria)
   $.ajax({
     type:"POST",
     data:"idCategoria="+idCategoria,
-    url:"procesos/categoria/obtenerDatosCatgoria.php",
+    url:"procesos/categoria/obtenerDatosCategoria.php",
     success:function (respuesta) {
+      respuesta=jQuery.parseJSON(respuesta)
 
-      
+      $('#idCategoria').val(respuesta['idcategoria']);
+      $('#NombreCatgoriaAct').val(respuesta['nombre']);
+      $('#descripcionCategoriaAct').val(respuesta['descripcion']);
     } 
   });
 }
