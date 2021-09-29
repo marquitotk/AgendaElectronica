@@ -62,3 +62,16 @@ function eliminarCategoria(idCategoria)
     } 
   });
 }
+function obtenerDatosCategoria(idCategoria)
+{
+
+  $.ajax({
+    type:"POST",
+    data:"idCategoria="+idCategoria,
+    url:"procesos/categoria/obtenerDatosCatgoria.php",
+    success:function (respuesta) {
+
+      
+    } 
+  });
+}

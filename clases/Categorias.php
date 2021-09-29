@@ -22,5 +22,18 @@ class Categorias extends Conexion{
         
         return $respuesta;
     }
+    public function obtenerDatosCategoria($idCategoria)
+    {
+        $conexion = Conexion::conectar();
+        $sql="SELECT id_categoria,nombreCategoria,descripcionCategoria FROM t_categoria WHERE id_categoria='$idCategoria'";
+        $resultado= mysqli_query($conexion,$sql);
+        $categoria= mysqli_fetch_array($resultado);
+
+        $datos=array("idCategoria"=>$categoria['id_categoria'],
+                    "nombre"=>$categoria['nombreCategoria'],
+                    "descripcion"=>$categoria['descripcionCategoria']);
+        return $datos;
+    }
+
 }
 ?>

@@ -9,9 +9,9 @@
       <div class="modal-body">
        <form action="">
          <label for="NombreCatgoria"> Nombre </label>
-         <input type="text" id="" name="" class="form-control">
+         <input type="text" id="NombreCatgoriaAct" name="NombreCatgoriaAct" class="form-control">
          <label for="NombreCatgoria"> Descripcion </label>
-         <input type="text" id="" name="" class="form-control">
+         <input type="text" id="descripcionCategoriaAct" name="descripcionCategoriaAct" class="form-control">
        </form>
       </div>
       <div class="modal-footer">
