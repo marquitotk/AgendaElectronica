@@ -4,11 +4,16 @@ $(document).ready(function()
     $('#btnGuardarCategoria').click(function(){
 
       if ($("#nombreCatgoria").val() === "" ) {
-        swal("T-T", "Por favor ingrese datos", "error");
+        swal("0-0", "Por favor ingrese datos", "error");
         return false;
        } 
         agregarCategoria();
     });
+    $('#btnActualizarCategoria').click(function()
+    {
+        actualizarCategoria();
+    });
+
 });
 function agregarCategoria()
 {
@@ -48,7 +53,7 @@ function eliminarCategoria(idCategoria)
      {
       respuesta=respuesta.trim();
       if (respuesta == 1) {
-        $('#frmAgregarCategoria')[0].reset();
+        $('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
         swal(":D","===Categorias","success");
       }
       else
@@ -77,4 +82,21 @@ function obtenerDatosCategoria(idCategoria)
       $('#descripcionCategoriaAct').val(respuesta['descripcion']);
     } 
   });
+}
+function actualizarCategoria(){
+  $.ajax({  
+		type:"POST",
+		data:$('#frmActualizarCategoria').serialize(),
+		url: "procesos/categoria/actualizarCategoria.php",
+		success:function(respuesta) {
+			respuesta = respuesta.trim();
+			if (respuesta == 1) {
+				$('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
+				$('#ActualizarCategoriaModal').modal("toggle");
+				swal(":D","Se actualizo con exito!==========","success");
+			} else {
+				swal(":(","No se pudo actualizar!===========","error");
+			}
+		}
+	});
 }

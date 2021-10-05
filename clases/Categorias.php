@@ -7,7 +7,8 @@ class Categorias extends Conexion{
         $conexion = Conexion::conectar();
         $sql ="INSERT INTO t_categoria(nombreCategoria,descripcionCategoria) VALUES (?,?)";
         $query=$conexion->prepare($sql);
-        $query->bind_param('ss',$datos['nombre'],$datos['descripcion']);
+        $query->bind_param('ss',$datos['nombre'],
+                                $datos['descripcion']);
         $respuesta=$query->execute();
         
         return $respuesta;
@@ -33,6 +34,20 @@ class Categorias extends Conexion{
                     "nombre"=>$categoria['nombreCategoria'],
                     "descripcion"=>$categoria['descripcionCategoria']);
         return $datos;
+    }
+    public function actualizarCategoria($datos)
+    {
+    $conexion=Conexion::conectar();
+    $sql ="UPDATE t_categoria SET  nombreCategoria= ?,
+                              descripcionCategoria= ? 
+                                WHERE id_categoria= ?";
+    $query = $conexion->prepare($sql);
+    $query -> bind_param('ssi',$datos['nombre'],
+                             $datos['descripcion'],
+                             $datos['idcategoria']);
+     $respuesta=$query->execute();
+     
+     return $respuesta;
     }
 
 }
